@@ -1,7 +1,6 @@
 @borderColor: rgb(224, 224, 224);
 
-
-.tableTopBorder(){
+.tableTopBorder() {
   border-top: 1px solid @borderColor;
 }
 
@@ -46,6 +45,9 @@
       }
       &.data-grid-checkbox {
         .checkBox();
+        .data-grid-cell-data {
+          padding: 5px;
+        }
       }
     }
   }
