@@ -1,35 +1,86 @@
+@borderColor: rgb(224, 224, 224);
+
+
+.tableTopBorder(){
+  border-top: 1px solid @borderColor;
+}
+
 .row() {
   .flexRow();
+  .tableTopBorder();
   flex: 1;
-  border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.cell {
+  .flexRow();
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.checkBox() {
+  flex: 0 0 30px;
+  .flexCenter();
 }
 
 .data-grid {
-  width: 100%;
-  .data-grid-header {
+  overflow: auto;
+  border: 1px solid @borderColor;
+  .data-grid-row {
     .row();
-    height: 30px;
-    .data-grid-header-cell {
-      .flexCenter();
-      flex: 1;
-    }
   }
-  .data-grid-body {
-    .flex();
-    flex: 1;
-    flex-direction: column;
-    .data-grid-body-row {
-      .row();
-      .data-grid-body-row-cell {
+  .data-grid-cell {
+    .cell();
+  }
+
+  .data-grid-header {
+    .flexRow();
+    .tableTopBorder();
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 30px;
+    .data-grid-cell {
+      .data-grid-cell-data {
+        .flexCenter();
         flex: 1;
       }
+      &.data-grid-checkbox {
+        .checkBox();
+      }
+    }
+  }
+
+  .data-grid-body {
+    .data-grid-row {
+      .data-grid-cell {
+        &.data-grid-checkbox {
+          .checkBox();
+        }
+        .data-grid-cell-data {
+          .flex();
+          flex: 1;
+          padding: 5px;
+        }
+      }
+    }
+    .data-grid-body-row-striped {
+      background-color: rgba(127, 221, 233, 0.4);
     }
     .highlight {
       background-color: rgb(245, 245, 245);
     }
   }
-  .data-grid-footer{
-    .pagination{
+
+  .data-grid-label {
+    width: 1px;
+    height: 100%;
+    background-color: @borderColor;
+    margin: 0 2px;
+    &.move {
+      cursor: col-resize;
+    }
+  }
+  .data-grid-footer {
+    .pagination {
 
     }
   }
