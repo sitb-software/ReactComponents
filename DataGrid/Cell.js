@@ -20,11 +20,20 @@ class Cell extends Component {
     rowData: PropTypes.object
   };
 
+  getCellValue(cellData) {
+    return typeof cellData === 'string' ? cellData : JSON.stringify(cellData);
+  }
+
   render() {
-    const {cellData, rowData, column} = this.props;
+    const {cellData, rowData, column, ...other} = this.props;
     return (
-      <div className={classNames('data-grid-body-row-cell', column.cellClassName)}>
-        {column.renderCell ? column.renderCell(cellData, column, rowData) : JSON.stringify(cellData)}
+      <div {...other}
+        className={classNames('data-grid-cell', column.cellClassName)}
+      >
+        <div className="data-grid-cell-data">
+          {column.renderCell ? column.renderCell(cellData, column, rowData) : this.getCellValue(cellData)}
+        </div>
+        <label className="data-grid-label"/>
       </div>
     );
   }
