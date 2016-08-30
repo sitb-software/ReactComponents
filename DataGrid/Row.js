@@ -64,7 +64,15 @@ class Row extends Component {
       length += 1;
     }
 
-    const width = rowWidth / length;
+    let newRowWidth = rowWidth;
+    columns.forEach(col => {
+      if (col.width) {
+        length -= 1;
+        newRowWidth -= col.width;
+      }
+    });
+
+    const width = newRowWidth / length;
 
     return (
       <div className={classNames('data-grid-row', className, {highlight})}
@@ -79,7 +87,7 @@ class Row extends Component {
                 key={index}
                 ref={cell => this.cells[`${index}`] = cell}
                 rowData={rowData}
-                style={{flexBasis: width}}
+                style={{flexBasis: col.width || width}}
           />
         ))}
       </div>

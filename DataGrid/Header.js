@@ -84,12 +84,10 @@ class Header extends Component {
         <div className="data-grid-cell-data">
           {renderHeaderCell ? renderHeaderCell(col) : label}
         </div>
-        {resizable ? (
-          <label className={classNames('data-grid-label', {move: resizable})}
-                 key={`label_${index}`}
-                 onMouseDown={this.handleLabelMouseDown(index)}
-          />
-        ) : null}
+        <label className={classNames('data-grid-label', {move: resizable})}
+               key={`label_${index}`}
+               onMouseDown={resizable ? this.handleLabelMouseDown(index) : null}
+        />
       </div>
     );
   }
@@ -114,7 +112,14 @@ class Header extends Component {
     if (selectable !== 'none') {
       length += 1;
     }
-    const width = bodyWidth / length;
+    let newBodyWidth = bodyWidth;
+    columns.forEach(col => {
+      if (col.width) {
+        length -= 1;
+        newBodyWidth -= col.width;
+      }
+    });
+    const width = newBodyWidth / length;
     return (
       <header className="data-grid-header"
               style={[{flexBasis: bodyWidth}, style]}
