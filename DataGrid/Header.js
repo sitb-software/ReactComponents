@@ -101,7 +101,9 @@ class Header extends Component {
       <div className="data-grid-cell data-grid-checkbox"
            key="selectable"
       >
-        <input type="checkbox"/>
+        <div className="data-grid-cell-data">
+          <input type="checkbox"/>
+        </div>
         <label className="data-grid-label"/>
       </div>
     );
