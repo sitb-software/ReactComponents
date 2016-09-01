@@ -21,7 +21,8 @@
   "homepage": "https://github.com/sitb-software/ReactComponents#readme",
   "dependencies": {
     "classnames": "^2.2.5",
-    "react": "^15.3.1"
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
