@@ -22,7 +22,7 @@ class Row extends Component {
     })).isRequired,
     rowData: PropTypes.object.isRequired,
     rowWidth: PropTypes.number,
-    selectable: PropTypes.oneOf(['none', 'single', 'multiple']),
+    selectable: PropTypes.oneOf(['none', 'single', 'multiple'])
   };
 
   state = {
@@ -41,19 +41,37 @@ class Row extends Component {
 
   renderSelectable() {
     const {selectable} = this.props;
-    if (selectable !== 'none') {
-      const col = {
-        cellClassName: 'data-grid-checkbox',
-        renderCell: () => (<input type="checkbox"/>)
-      };
-      return (
-        <Cell cellData=""
-              column={col}
-              rowData={{}}
-        />
-      );
+    let result = null;
+    let col = {
+      cellClassName: 'data-grid-checkbox'
+    };
+    switch (selectable) {
+      case 'single':
+        col.renderCell = () => (
+          <input name="signle-check"
+                 type="radio"
+          />
+        );
+        result = (
+          <Cell cellData=""
+                column={col}
+                rowData={{}}
+          />
+        );
+        break;
+      case 'multiple':
+        col.renderCell = () => (<input type="checkbox"/>);
+        result = (
+          <Cell cellData=""
+                column={col}
+                rowData={{}}
+          />
+        );
+        break;
+      default:
+        break;
     }
-    return null;
+    return result;
   }
 
   render() {
