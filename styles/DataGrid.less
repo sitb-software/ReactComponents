@@ -1,7 +1,5 @@
-@borderColor: rgb(224, 224, 224);
-
 .tableTopBorder() {
-  border-top: 1px solid @borderColor;
+  border-top: 1px solid @DataGridBorderColor;
 }
 
 .row() {
@@ -24,7 +22,7 @@
 .data-grid {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  border: 1px solid @borderColor;
+  border: 1px solid @DataGridBorderColor;
   .data-grid-row {
     .row();
   }
@@ -38,6 +36,7 @@
     flex-grow: 0;
     flex-shrink: 0;
     height: 30px;
+    font-weight: 700;
     .data-grid-cell {
       .data-grid-cell-data {
         .flexCenter();
@@ -66,17 +65,17 @@
       }
     }
     .data-grid-body-row-striped {
-      background-color: rgba(127, 221, 233, 0.4);
+      background-color: @DataGridRowStriped;
     }
     .highlight {
-      background-color: rgb(245, 245, 245);
+      background-color: @DataGridHighlightColor;
     }
   }
 
   .data-grid-label {
     width: 1px;
     height: 100%;
-    background-color: @borderColor;
+    background-color: @DataGridBorderColor;
     margin: 0 2px;
     &.move {
       cursor: col-resize;
