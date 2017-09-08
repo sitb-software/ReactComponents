@@ -53,5 +53,8 @@ activemq-data
 *.war
 *.ear
 *.sw?
+*.d.ts
+*.js
+*.js.map
 .#*
 *#
