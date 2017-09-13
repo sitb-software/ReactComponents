@@ -5,9 +5,9 @@ export default class Layout extends Component {
 
   render() {
     return (
-      <main className={this.getClassName('main')}>
+      <div className={this.getClassName('main')}>
         {this.props.children}
-      </main>
+      </div>
     );
   }
 

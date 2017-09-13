@@ -4,18 +4,21 @@
   "description": "react components",
   "main": "lib/index.js",
   "scripts": {
-    "clean": "rm -rf **/*.d.ts **/*.js **/*.js.map",
+    "clean": "rm -rf *.d.ts *.js *.js.map **/*.d.ts **/*.js **/*.js.map",
     "build": "tsc"
   },
   "repository": "git+https://github.com/sitb-software/ReactComponents.git",
   "keywords": [
-    "react"
+    "react",
+    "react-components"
   ],
   "author": "Sean",
   "license": "ISC",
   "files": [
     "**/*.js",
     "**/*.d.ts",
+    "**/*.scss",
+    "**/*.sass",
     "package.json"
   ],
   "bugs": {
@@ -27,6 +30,7 @@
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
+    "@types/node": "^8.0.28",
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
     "react": "^15.6.1",

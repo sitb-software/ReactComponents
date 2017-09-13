@@ -1,6 +1,6 @@
 import {Component} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import * as PropTypes from 'prop-types';
+import * as classNames from 'classnames';
 
 const excludeFunc = [
   'constructor',
@@ -19,7 +19,7 @@ const excludeFunc = [
  */
 export default class AbstractComponent<P = {}, S = {}> extends Component<any, any> {
 
-  static contextTypes: {
+  static contextTypes = {
     classPrefix: PropTypes.string
   };
 
@@ -34,12 +34,16 @@ export default class AbstractComponent<P = {}, S = {}> extends Component<any, an
   }
 
   /**
-   * 获取
+   * 获取class name
+   * @param cls 基本类名
+   * @param other 其他class
    */
-  getClassName(cls) {
+  getClassName(cls, other?: Object): string {
     const {className} = this.props;
     const {classPrefix} = this.context;
-    return classNames(`${classPrefix}${cls}`, className);
+    const result = {};
+    other && Object.keys(other).forEach(key => result[`${classPrefix}${key}`] = other[key]);
+    return classNames(cls && `${classPrefix}${cls}`, className, result);
   }
 
 }
