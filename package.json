@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rm -rf *.d.ts *.js *.js.map **/*.d.ts **/*.js **/*.js.map",
-    "build": "tsc"
+    "build": "tsc",
+    "postinstall": "tsc"
   },
   "repository": "git+https://github.com/sitb-software/ReactComponents.git",
   "keywords": [
@@ -15,6 +16,8 @@
   "author": "Sean",
   "license": "ISC",
   "files": [
+    "*.ts",
+    "*.tsx",
     "**/*.js",
     "**/*.d.ts",
     "**/*.scss",
